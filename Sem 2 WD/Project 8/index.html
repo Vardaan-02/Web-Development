@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:"Roboto", sans-serif;;
+        }
+        
+        body {
+            background: black;
+            display: flex;
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            height: 80vh;
+            width: 40%;
+            color: #ffb400;
+            background-color: transparent;
+            display: flex;
+            border: solid #ffb400;
+            border-radius: 20px;
+            border-width: 4px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h1 {
+            padding: 20px;
+        }
+        
+        p {
+            font-size: 1.5rem;
+        }
+        
+        input {
+            padding: 10px;
+            font-size: 1.5rem;
+            border: 2px solid white;
+            border-radius: 15px;
+            color: white; /* Changed color to black */
+            background-color: #ffb400;
+        }
+        
+        input:hover {
+            transition: 0.5s;
+            transform: translateY(-3px);
+            border-radius: 10px;
+        }
+        
+        div {
+            padding: 10px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            border-radius: 15px;
+            background-color: #ffb400;
+            border: none;
+            cursor: pointer;
+        }
+        
+        table {
+            border-collapse: collapse;
+            margin-top: 20px; /* Added margin for better separation */
+        }
+        
+        table tr th,
+        td {
+            padding: 10px; /* Reduced padding for better appearance */
+            border: 1px solid white; /* Added border for better visibility */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payload Management</h1>
+        <div class="bill">
+            <p>Bill:</p>
+            <input id="bill" type="text" placeholder="Type the bill amount">
+        </div>
+        <div class="given">
+            <p>Given:</p>
+            <input id="given" type="text" placeholder="Type the amount given">
+        </div>
+        <div class="given">
+            <button onclick="calc()">Submit</button>
+        </div>
+        <div class="table">
+            <table>
+                <tr>
+                    <th>Value of Bills</th>
+                    <th>500</th>
+                    <th>100</th>
+                    <th>50</th>
+                    <th>10</th>
+                    <th>5</th>
+                    <th>1</th>
+                </tr>
+                <tr>
+                    <td>No. of Bills</td>
+                    <td id="bills500"></td>
+                    <td id="bills100"></td>
+                    <td id="bills50"></td>
+                    <td id="bills10"></td>
+                    <td id="bills5"></td>
+                    <td id="bills1"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function calc() {
+            let bill = parseInt(document.getElementById("bill").value);
+            let given = parseInt(document.getElementById("given").value);
+            if (isNaN(bill) || isNaN(given)) {
+                alert("Please enter valid numbers.");
+            } else {
+                let left = given - bill;
+                let data = document.querySelectorAll("td[id^='bills']");
+                let ticker = [500, 100, 50, 10, 5, 1];
+                data.forEach((element, index) => {
+                    let count = Math.floor(left / ticker[index]);
+                    element.innerHTML = count;
+                    left -= count * ticker[index];
+                });
+                document.getElementById("bill").value = bill;
+                document.getElementById("given").value = given;
+            }
+        }
+    </script>
+</body>
+</html>

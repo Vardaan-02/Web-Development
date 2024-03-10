@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    body{
+        height:100vh;
+        width:100%;
+        display: flex;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.916),rgba(0, 0, 0, 0.509)),url(' yo.jpeg') ;
+         background-size: cover;
+        font-family: 'Poppins', sans-serif;
+        justify-content: center;
+        align-items: center;
+    }
+    .container{
+        height:400px;
+        width:600px;
+        border-radius: 15px;
+        color:white;
+        background-color: transparent;
+        border: solid #FFE6E6;
+        border-radius: 30px;
+        border-width: 4px;
+        box-shadow: 30px black;
+    }
+
+    .container:hover{
+        transition:  background 0.5s , transform 0.5s;
+        background-color: transparent;
+        color: white;
+        transform: translateY(-10px);
+    }
+
+    .left{
+        display: flex;
+        flex-direction: column;
+        padding:20px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    label{
+        font-size:1.5rem;
+        font-weight: bold;
+    }
+
+    input{
+        background-color: #40679E;
+        padding:10px;
+        font-size:1rem;
+        margin:5px;
+        color: white;
+        border-radius: 10px;
+        border:none;
+    }
+
+    input[type=submit]{
+        background-color: #ffb300 ;
+        border:2px solid #FFE6E6;
+        padding: 10px 30px;
+        margin:10px;
+        cursor: pointer;
+    }
+
+    .right{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .right table tr td{
+        padding:20px;
+        text-align: center;
+    }
+
+    #total, #totaltip{
+        margin:10px;
+        background-color: transparent;
+        border-radius: 10px;
+        border: dotted #FFE6E6;
+    }
+
+    #total:hover{
+        transition:  background 0.5s , transform 0.5s;
+        background-color: transparent;
+        color: white;
+        transform: translateY(-5px);
+    }
+
+    #totaltip:hover{
+        transition:  background 0.5s , transform 0.5s;
+        background-color: transparent;
+        color: white;
+        transform: translateY(-5px);
+    }
+
+    #cal:hover{
+        transition:  background 0.5s , transform 0.5s;
+        background-color: #ff004f;
+        color: white;
+        transform: translateY(-5px);
+    }
+
+</style>
+<body>
+    <div class="container">
+            <div class="left" >
+                <table>
+                    <tr>
+                        <td><label for="Bill">Bill</label></td>
+                        <td><input type="text" id="Bill"></td>
+                    </tr>
+                    <tr>    
+                        <td><label for="Tip">Tip %</label></td>
+                        <td><input type="number" id="Tip" value="15" min="0"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="people">No. of People</label></td>
+                        <td><input type="number" id="people" value="1" min="1"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input id="cal" type="Submit" value="calculate" onclick="calc()"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="right">
+                <table>
+                    <tr style="color: #ff004f;">
+                        <td>Tip <span>per person</span></td>
+                        <td>Total <span>per person</span></td>
+                    </tr>
+                    <tr>
+                        <td id="totaltip">$0.00</td>
+                        <td id="total">$0.00</td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+</body>
+<script>
+    function calc(){
+        const billinput = document.getElementById("Bill");
+        const bill = parseInt(document.getElementById("Bill").value);
+        const tip = document.getElementById("Tip").value;
+        const people = document.getElementById("people").value;
+        if(isNaN(bill)){
+            alert("Enter your Bill Correctly");
+            return;
+        }
+        const tips = Math.round((((tip/100)*bill)/people)*10)/10;
+        const totals = Math.round(((bill + tips)/people)* 10)/10;
+        const totaltip = document.getElementById("totaltip").innerText = "$"+tips;
+        const total = document.getElementById("total").innerText = "$"+totals;
+        billinput.value = bill;
+    }
+</script>
+</html>

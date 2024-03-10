@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:"Roboto", sans-serif;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black ;
+    color: #ffb400;
+}
+
+.container{
+    width: 40%;
+    height: 80%;
+    background-color:transparent;
+    display: flex;
+    border: solid 2px #ffb400;
+    box-shadow: 8px 8px 20px #ffb400;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 2rem;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#text{
+    border-radius: 1rem;
+    padding: 4%;
+    font-size: 1rem;
+    background-color: #222;
+    border:none;
+    outline: none;
+    color: #ffb400;
+}
+
+#text::placeholder{
+    color: #ffb400;
+}
+
+.heading{
+    height: 30%;
+    width: 80%;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid #ffb400;
+}
+
+.content{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bits, .kilo, .mega, .btn{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn button{
+    height: 70%;
+    width: 40%;
+    border-radius: 20px;
+    border: none;
+    color: #ffb400;
+    background-color: transparent;
+    border: 2px solid #ffb400;
+    margin-bottom: 10px;
+    
+}
+
+button:hover{
+    transition:  background 0.5s , transform 0.5s;
+    box-shadow: 4px 4px 20px #ffb400;
+    background-color: transparent;
+    color: #ffb400;
+    transform: translateY(-5px);
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="heading">
+            <p>Convert Text To Speech</p>
+        </div>
+        <div class="content">
+                <div class="input">
+                    <textarea id="text" placeholder="Enter text to convert" rows="10" cols="50"></textarea>
+                </div>
+                <div class="btn">
+                    <button><p>Play Sound</p></button>
+                </div>
+        </div>
+    </div>
+</body>
+<script>
+
+let btn = document.querySelector('.btn button');
+btn.addEventListener('click',()=>{
+
+    let input = document.getElementById('text');
+    let text = input.value;
+    if(!text){
+        alert("Nothing To Convert!");
+        return;
+    }
+    let speaks = new SpeechSynthesisUtterance(text);
+    speaks.text = text;
+    speaks.voice = window.speechSynthesis.getVoices[0];
+    window.speechSynthesis.speak(speaks);
+});
+
+</script>
+</html>

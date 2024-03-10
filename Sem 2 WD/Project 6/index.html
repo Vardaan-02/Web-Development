@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black ;
+    color: white;
+}
+
+.container{
+    width: 40%;
+    height: 80%;
+    background-color:transparent;
+    display: flex;
+    border: solid whitesmoke;
+    box-shadow: 8px 8px 20px #FFB400;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 2rem;
+}
+
+.heading{
+    height: 30%;
+    width: 80%;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid #FFB400;
+}
+
+.content{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bits, .kilo, .mega, .btn{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn button{
+    height: 70%;
+    width: 40%;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    margin-bottom: 10px;
+    
+}
+
+button:hover{
+    transition:  background 0.5s , transform 0.5s;
+    box-shadow: 4px 4px 20px rgb(231, 162, 162);
+    background-color: transparent;
+    color: white;
+    transform: translateY(-5px);
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="heading">
+            <p>Check Your Network Speed</p>
+        </div>
+        <div class="content">
+            <div class="bits">
+                <p>Network Speed In Bits:&nbsp</p><p class="bit"></p>
+            </div>
+            <div class="kilo">
+                <p>Network Speed In KB:&nbsp</p><p class="kb"></p>
+            </div>
+            <div class="mega">
+                <p>Network Speed In MB:&nbsp</p><p class="mb"></p>
+            </div>
+            <div class="btn">
+                <button><p>Check Speed</p></button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+let btn = document.querySelector('.btn button');
+
+btn.addEventListener('click',()=>{
+    let img = "https://cdn.esahubble.org/archives/images/large/heic2018b.jpg";
+
+    let link = new Image();
+    link.src = img;
+    
+    let size;
+
+    let start = new Date().getTime();
+    let end;
+
+    btn.innerHTML = "Calculating...";
+    
+    link.onload = async function () {
+        end = new Date().getTime();
+        await fetch(img).then((response) => {
+          size = response.headers.get("content-length");
+          speed();
+        });
+      };
+    
+    function speed(){
+        let time = (end - start)/1000;
+        let bit = size * 8;
+        let bps = (bit / time).toFixed(2);
+        let kbps = (bps / 1024).toFixed(2);
+        let mbps = (kbps / 1024).toFixed(2);
+
+        let bits = document.querySelector('.bit');
+        let kb = document.querySelector('.kb');
+        let mb = document.querySelector('.mb');
+
+        bits.innerHTML = `${bps}`;
+        kb.innerHTML = `${kbps}`;
+        mb.innerHTML = `${mbps}`;
+        
+        btn.innerHTML = "Fetch Speed";
+    }
+});
+</script>
+</html>

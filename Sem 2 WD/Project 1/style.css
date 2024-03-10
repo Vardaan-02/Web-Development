@@ -1,0 +1,93 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.move{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    background: #FFF;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.toRight{
+    transition: all 1s;
+    transform: translateX(50vw);
+}
+.toLeft{
+    transition: all 1s;
+    transform: translateX(0vw);
+}
+.left{
+    width: 50%;
+    height: 96vh;
+    margin-top: 2vh;
+    margin-left: 2vh;
+    background: linear-gradient(to right, #000428, #004e92);
+    background-color: black;
+    box-shadow: inset 0px 0px 50px white;
+    border-radius: 20px;
+}
+.right{
+    width: 50%;
+    height: 96vh;
+    margin-top: 2vh;
+    margin-right: 2vh;
+    background: linear-gradient(to right, #02a8a8, #4fb783);
+    box-shadow: inset 0px 0px 10px white;
+    border-radius: 20px;
+}
+input{
+    width: 30vw;
+    height: 5vh;
+    border: solid 1px black;
+}
+input::placeholder{
+    padding-left: 3vh;
+}
+.heading{
+    font-size: 5rem;
+    font-weight: 900;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+}
+button{
+    width: 14vw;
+    height: 5vh;
+    border: 0px;
+}
+.this{
+    color: #4caf50;
+    background-color: white;
+}
+.that{
+    color: white;
+    background-color: #4caf50;
+}
+.login{
+    background: linear-gradient(to right, #000428, #004e92);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.signup{
+    background: linear-gradient(to right, #02a8a8, #4fb783);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

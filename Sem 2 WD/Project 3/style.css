@@ -1,0 +1,110 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+header{
+    position: relative;
+}
+#topNav{
+    display: flex;
+    height: 90px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e2e2a2;
+}
+#topNav nav{
+    display: flex;
+}
+
+#parentMainNav{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+.mainNavItems{
+    font-size: 1.8vh;
+    margin-left: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    position: relative;
+}
+.mainNavItems:hover{
+    text-decoration: underline;
+    text-decoration-color: #7E22CE;
+    text-decoration-thickness: 0.4vh;
+    bottom: 2.5px;
+    text-underline-offset: 1vh;
+}
+.sideNavButtons{
+    font-size: 1.8vh;
+    margin-right: 5px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #7E22CE;
+    color: white;
+    border-radius: 10px;
+    padding: 1.5vh;
+    padding-top: 0.7vh;
+    padding-bottom: 0.7vh;
+}
+.sideNavButtons:hover{
+    background-color: #5900a7;
+}
+#codeWithHarryLi{
+    font-size: 2.5vh;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #7E22CE;
+}
+#codeWithHarry{
+    margin-left: 3.8vh;
+}
+#signUp{
+    margin-right: 3.4vh;
+}
+#darkMode{
+    height: 1.8rem;
+    width: 1.8rem;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#bottomNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+    box-shadow: 0px 2px 5px #b8b8b8a2;
+}
+.bottomNavIcons{
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+.bottomeNavItems{
+    font-family: 'Poppins', sans-serif;
+    color: #7E22CE;
+    position: relative;
+}
+.bottomeNavItems:hover{
+    text-decoration: underline;
+    text-decoration-color: #7E22CE;
+    text-decoration-thickness: 3px;
+    bottom: 2.5px;
+    text-underline-offset: 7px;
+}
+#bottomMainNav{
+    display: flex;
+    gap: 1.5rem;
+}
+#menu{
+    position: absolute;
+    opacity: 0;
+    font-size: 0px;
+}
+
+.p{
+    height: 300vh;
+}

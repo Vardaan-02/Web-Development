@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+body{
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+}
+.main{
+    display: flex;
+    flex-direction: row-reverse;
+}
+button,h1{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+button{
+    color: black;
+    padding: 1vh 2vh;
+    font-weight: 700;
+}
+input{
+    color: black;
+}

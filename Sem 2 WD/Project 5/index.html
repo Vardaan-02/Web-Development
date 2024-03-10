@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b76859b742.js" crossorigin="anonymous"></script>
+    <title>To Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+        font-weight: normal;
+    }
+
+    body {
+        background-image: linear-gradient(rgba(239, 255, 15, 0.916),rgba(56, 255, 2, 0.509)) ;
+         background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+    }
+
+    #text:hover{
+        transition:  background 0.5s , transform 0.5s;
+        background-color: transparent;
+        color: black;
+        transform: translateY(-10px);
+        border-radius: 10px;
+    }
+
+    .main {
+        height: auto;
+        width: 30%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-height: 80vh;
+        overflow-y: scroll;
+        transform: translate(-50%, -50%);
+        background-color: transparent;
+        border-radius: 30px;
+        border: solid black;
+        padding: 10px 30px 30px 30px;
+    }
+
+    .header {
+        width: 100%;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-weight: 900;
+        padding: 10px;
+    }
+
+    .header input {
+        width: 83%;
+        font-size: 1.2rem;
+        padding: 10px;
+        background-color: transparent;
+        border: 2px solid black;
+    }
+
+    .header button {
+        width: 10%;
+        font-size: 1.2rem;
+        padding: 10px;
+        cursor: pointer;
+        float: right;
+        background-color: transparent;
+        border: 2px solid black;
+    }
+
+    .row {
+        width: 100%;
+        font-size: 0px;
+        margin-top: 20px;
+    }
+
+    .row u {
+        font-size: 1.5rem;
+        padding: 10px;
+        display: inline-block;
+        width: 70%;
+        text-decoration: none;
+    }
+
+    .row span {
+        cursor: pointer;
+    }
+
+    .row span i {
+        font-size: 1.5rem;
+        padding: 10px;
+        margin-left: 9px;
+        color: #ff004f;
+    }
+
+    #add{
+        color: black;
+        border-radius: 10px;
+    }
+
+    #add:hover{
+        transition: 0.5s ;
+        background-color:#ff004f;
+        color: black;
+        transform: translateY(-10px);
+        border-radius: 10px;
+    }
+    .row{
+        border-radius: 10px;
+        color: black;
+        border: 4px solid black;
+    }
+
+</style>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>To Do List</h1>
+            <input type="text" id="text" style="border-radius:10px ;">
+            <button id="add">+</button>
+        </div>
+    </div>
+</body>
+<script>
+    let main = document.querySelector(".main");
+    document.getElementById("add").addEventListener("click", function () {
+        let text = document.getElementById("text").value;
+        let row = document.createElement("div");
+        row.classList.add("row");
+        if (text == "") {
+            alert("Empty list");
+        }
+        else {
+            row.innerHTML = '<u>' + text + '</u><span class="delete"><i class="fa-solid fa-trash-can"></i></span><span class="done"><i class="fa-solid fa-check"></i></span>';
+            document.getElementById("text").value = "";
+            main.appendChild(row);
+            update();
+        }
+    });
+
+    let deleterow;
+    let strikerow;
+    function update() {
+        deleterow = Array.from(document.getElementsByClassName("delete"));
+        deleterow.forEach(function (e) {
+            e.addEventListener("click", function (e) {
+                e.target.parentElement.parentElement.remove();
+            });
+        });
+
+        strikerow = Array.from(document.getElementsByClassName("done"));
+        strikerow.forEach(function (e) {
+            e.addEventListener("click", function (e) {
+                const done = e.target.parentElement.parentElement.firstChild.innerHTML;
+                e.target.parentElement.parentElement.firstChild.innerHTML = `<strike>${done}</strike>`;
+                e.target.style.opacity = "0.3";
+                e.target.style.cursor = "not-allowed";
+            });
+        });
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+    }
+    body{
+        height:100vh;
+        display: flex;
+        background: black ;
+        align-items: center;
+        background-size: cover;
+
+    }
+    .container{
+        height:40vh;
+        width:40vh;
+        border: 20px #676767 solid;
+        border-radius: 50%;
+        margin-left: 575px;
+        margin-top: 65px;
+        background-color: #FAF8E7;
+        box-shadow: 10px 10px 10px rgb(31, 25, 25);
+    }
+    .container2{
+        height:40vh;
+        width:40vh;
+        margin-left: 575px;
+        margin-top: 65px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    ul{
+        list-style-type: none;
+        height:100%;
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        position: relative;
+    }
+    li{
+        position:absolute;
+        height:100%;
+        top:0;
+        font-size: 2.5rem;
+    }
+    ul li:nth-child(1){
+        transform: rotate(30deg);
+    }
+    ul li:nth-child(2){
+        transform: rotate(60deg);
+    }
+    ul li:nth-child(3){
+        transform: rotate(90deg);
+    }
+    ul li:nth-child(3) div{
+        transform: rotate(-90deg);
+    }
+    ul li:nth-child(4){
+        transform: rotate(120deg);
+    }
+    ul li:nth-child(5){
+        transform: rotate(150deg);
+    }
+    ul li:nth-child(6){
+        transform: rotate(180deg);
+    }
+    ul li:nth-child(6) div{
+        transform: rotate(-180deg);
+    }
+    ul li:nth-child(7){
+        transform: rotate(-30deg);
+    }
+    ul li:nth-child(8){
+        transform: rotate(-60deg);
+    }
+    ul li:nth-child(9){
+        transform: rotate(-90deg);
+    }
+    ul li:nth-child(9) div{
+        transform: rotate(90deg);
+    }
+    ul li:nth-child(10){
+        transform: rotate(-120deg);
+    }
+    ul li:nth-child(11){
+        transform: rotate(-150deg);
+    }
+    ul li:nth-child(12){
+        transform: rotate(0deg);
+    } 
+    #second{
+        border-radius: 50px;
+        height:38%;
+        background-color: #232323;
+        width:5px;
+        transform-origin: 50% 100%;
+        top:12%;
+        position: absolute;
+        transform: rotate(0deg);
+    }
+    #minute{
+        border-radius: 50px;
+        height:34%;
+        background-color: #232323;
+        width:7.5px;
+        transform-origin: 50% 100%;
+        top:16%;
+        position: absolute;
+        transform: rotate(0deg);
+    }
+    #hour{
+        border-radius: 50px;
+        height:26%;
+        background-color: #232323;
+        width:10px;
+        transform-origin: 50% 100%;
+        top:24%;
+        position: absolute;
+        transform: rotate(0deg);
+    }
+    #circle{
+        height:4%;
+        width:4%;
+        border-radius: 50%;
+        background-color: #232323;
+    }
+</style>
+<body>
+    <div class="container">
+        <ul>
+            <li><div>I</div></li>
+            <li><div>I</div></li>
+            <li><div>3</div></li>
+            <li><div>I</div></li>
+            <li><div>I</div></li>
+            <li><div>6</div></li>
+            <li><div>I</div></li>
+            <li><div>I</div></li>
+            <li><div>9</div></li>
+            <li><div>I</div></li>
+            <li><div>I</div></li>
+            <li><div>12</div></li>
+        </ul>
+    </div>
+    <div class="container2">
+        <div id="circle"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+        <div id="hour"></div>
+    </div>
+</body>
+<script>
+    let second = document.getElementById("second");
+    let minute = document.getElementById("minute");
+    let hour = document.getElementById("hour");
+
+    setInterval(function(){
+        let date = new Date();
+        let x = (date.getSeconds()*6);
+        second.style.transform = `rotate(${x}deg)`;
+        let y = (((date.getMinutes()*60)+(date.getSeconds()))*0.1);
+        minute.style.transform = `rotate(${y}deg)`;
+        let z = (((date.getHours()*3600) + (date.getMinutes()*60) + date.getSeconds()) * (1/120));
+        hour.style.transform = `rotate(${z}deg)`;
+    }, 1000);
+</script>
+</html>
