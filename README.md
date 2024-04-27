@@ -1,4 +1,4 @@
-This is all the projects needed to get marks made in 6 hours . i didn't put much effort because last time when i made portfolio i got only 70 marks which is below class average and that time i worked hard created three different pages and used css animations </br>
+
 1) Responsive sliding login and registration forms using HTML CSS and JavaScript.   &nbsp&nbsp&nbsp   https://vardaan-02.github.io/Web-Development/Sem%202%20WD/Project%201/index.html</br>
 </br>
 2) Design a Student Grade Calculator using JavaScript &nbsp&nbsp&nbsp https://vardaan-02.github.io/Web-Development/Sem%202%20WD/Project%202/index.html</br>
